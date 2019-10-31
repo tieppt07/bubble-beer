@@ -11,11 +11,16 @@
 
 	<title>Clean Blog</title>
 
-	<!-- Bootstrap Core CSS -->
-	<link href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css" rel="stylesheet">
+    <?php if (!is_page_template('timeline.php')): ?>
+        <!-- Bootstrap Core CSS -->
+        <link href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Custom CSS -->
-	<link href="<?php echo get_template_directory_uri() ?>/css/clean-blog.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="<?php echo get_template_directory_uri() ?>/css/clean-blog.min.css" rel="stylesheet">
+    <?php else: ?>
+        <script>document.getElementsByTagName("html")[0].className += " js";</script>
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/css/style.css">
+    <?php endif; ?>
 
 	<!-- Custom Fonts -->
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">

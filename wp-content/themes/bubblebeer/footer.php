@@ -39,14 +39,19 @@
 	</div>
 </footer>
 
-<!-- jQuery -->
-<script src="<?php echo get_template_directory_uri() ?>/js/jquery.js"></script>
+<?php if (!is_page_template('timeline.php')): ?>
+    <!-- jQuery -->
+    <script src="<?php echo get_template_directory_uri() ?>/js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="<?php echo get_template_directory_uri() ?>/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo get_template_directory_uri() ?>/js/bootstrap.min.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="<?php echo get_template_directory_uri() ?>/js/clean-blog.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="<?php echo get_template_directory_uri() ?>/js/clean-blog.min.js"></script>
+
+<?php else: ?>
+    <script src="<?php echo get_template_directory_uri() ?>/assets/js/main.js"></script>
+<?php endif; ?>
 
 </body>
 
