@@ -7,3 +7,9 @@ if (! is_admin()) {
 }
 
 register_nav_menus();
+
+function bb_pagination()
+{
+    global $wp_query;
+    echo paginate_links();
+}

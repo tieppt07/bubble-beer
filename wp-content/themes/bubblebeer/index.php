@@ -29,8 +29,10 @@
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <?php
-                $posts = get_posts();
-                if ( $posts ): foreach ($posts as $post): setup_postdata( $post ); ?>
+                $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+                $args = array('posts_per_page' => 1, 'paged' => $paged );
+                query_posts($args); ?>
+                <?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
                 <div class="post-preview">
                     <a href="<?php the_permalink(); ?>">
                         <h2 class="post-title"><?php the_title(); ?></h2>
@@ -39,13 +41,18 @@
                     <p class="post-meta">Posted on <?php the_time(); ?></p>
                 </div>
                 <hr>
-            <?php endforeach; endif; ?>
+            <?php endwhile; ?>
+
 			<!-- Pager -->
 			<ul class="pager">
+                <li class="previous">
+                    <?php previous_posts_link( 'Older posts' ); ?>
+                </li>
 				<li class="next">
-					<a href="#">Older Posts &rarr;</a>
+                    <?php next_posts_link('Newer posts'); ?>
 				</li>
 			</ul>
+            <?php endif; ?>
 		</div>
 	</div>
 </div>
