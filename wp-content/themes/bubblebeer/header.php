@@ -15,6 +15,8 @@
     <!-- Custom CSS -->
     <link href="<?php echo get_template_directory_uri() ?>/css/clean-blog.min.css" rel="stylesheet">
 
+    <link href="<?php echo get_template_directory_uri() ?>/style.css" rel="stylesheet">
+
 	<!-- Custom Fonts -->
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -41,7 +43,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">Start Bootstrap</a>
+				<a class="navbar-brand" href="<?php echo home_url(); ?>"><?php echo bloginfo('site_title') ?></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

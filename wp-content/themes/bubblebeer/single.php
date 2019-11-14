@@ -8,9 +8,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1><?php the_title(); ?></h1>
+                        <h1><?php // the_title(); ?></h1>
                         <hr class="small">
-                        <span class="subheading"><?php the_excerpt(); ?></span>
+                        <span class="subheading"><?php // the_excerpt(); ?></span>
                     </div>
                 </div>
             </div>

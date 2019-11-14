@@ -1,7 +1,8 @@
 <?php
-/**
- * Template Name: timeline page
- */
+    /**
+     * Template Name: timeline page
+     */
+    global $wp_query;
  ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -26,102 +27,41 @@
 <body>
     <section class="cd-timeline js-cd-timeline">
         <div class="container max-width-lg cd-timeline__container">
-            <div class="cd-timeline__block">
-                <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-picture.svg" alt="Picture">
-                </div> <!-- cd-timeline__img -->
+	        <?php query_posts([
+                'post_type' => 'post',
+                'cat' => 'beer',
+                'post_status' => 'publish',
+            ]); ?>
+	        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                <div class="cd-timeline__block">
+                    <?php if (has_category('location')): ?>
+                        <div class="cd-timeline__img cd-timeline__img--location">
+                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-location.svg" alt="Location">
+                        </div>
+                    <?php elseif (has_category('video')): ?>
+                        <div class="cd-timeline__img cd-timeline__img--movie">
+                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-movie.svg" alt="Video">
+                        </div>
+                    <?php else: ?>
+                        <div class="cd-timeline__img cd-timeline__img--picture">
+                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-picture.svg" alt="Picture">
+                        </div>
+                    <?php endif; ?>
 
-                <div class="cd-timeline__content text-component">
-                    <h2>Title of section 1</h2>
-                    <p class="color-contrast-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                    <div class="cd-timeline__content text-component">
+                        <h2><?php the_title(); ?></h2>
+                        <?php the_post_thumbnail('medium'); ?>
+                        <p class="color-contrast-medium"><?php the_excerpt(); ?></p>
 
-                    <div class="flex justify-between items-center">
-                        <span class="cd-timeline__date">Jan 14</span>
-                        <a href="#0" class="btn btn--subtle">Read more</a>
+                        <div class="flex justify-between items-center">
+                            <span class="cd-timeline__date"><?php the_date(); ?></span>
+                            <a href="<?php the_permalink(); ?>" class="btn btn--subtle">Read more</a>
+                        </div>
                     </div>
-                </div> <!-- cd-timeline__content -->
-            </div> <!-- cd-timeline__block -->
-
-            <div class="cd-timeline__block">
-                <div class="cd-timeline__img cd-timeline__img--movie">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-movie.svg" alt="Movie">
-                </div> <!-- cd-timeline__img -->
-
-                <div class="cd-timeline__content text-component">
-                    <h2>Title of section 2</h2>
-                    <p class="color-contrast-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
-
-                    <div class="flex justify-between items-center">
-                        <span class="cd-timeline__date">Jan 18</span>
-                        <a href="#0" class="btn btn--subtle">Read more</a>
-                    </div>
-                </div> <!-- cd-timeline__content -->
-            </div> <!-- cd-timeline__block -->
-
-            <div class="cd-timeline__block">
-                <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-picture.svg" alt="Picture">
-                </div> <!-- cd-timeline__img -->
-
-                <div class="cd-timeline__content text-component">
-                    <h2>Title of section 3</h2>
-                    <p class="color-contrast-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
-
-                    <div class="flex justify-between items-center">
-                        <span class="cd-timeline__date">Jan 24</span>
-                        <a href="#0" class="btn btn--subtle">Read more</a>
-                    </div>
-                </div> <!-- cd-timeline__content -->
-            </div> <!-- cd-timeline__block -->
-
-            <div class="cd-timeline__block">
-                <div class="cd-timeline__img cd-timeline__img--location">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-location.svg" alt="Location">
-                </div> <!-- cd-timeline__img -->
-
-                <div class="cd-timeline__content text-component">
-                    <h2>Title of section 4</h2>
-                    <p class="color-contrast-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-
-                    <div class="flex justify-between items-center">
-                        <span class="cd-timeline__date">Feb 14</span>
-                        <a href="#0" class="btn btn--subtle">Read more</a>
-                    </div>
-                </div> <!-- cd-timeline__content -->
-            </div> <!-- cd-timeline__block -->
-
-            <div class="cd-timeline__block">
-                <div class="cd-timeline__img cd-timeline__img--location">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-location.svg" alt="Location">
-                </div> <!-- cd-timeline__img -->
-
-                <div class="cd-timeline__content text-component">
-                    <h2>Title of section 5</h2>
-                    <p class="color-contrast-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
-
-                    <div class="flex justify-between items-center">
-                        <span class="cd-timeline__date">Feb 18</span>
-                        <a href="#0" class="btn btn--subtle">Read more</a>
-                    </div>
-                </div> <!-- cd-timeline__content -->
-            </div> <!-- cd-timeline__block -->
-
-            <div class="cd-timeline__block">
-                <div class="cd-timeline__img cd-timeline__img--movie">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/cd-icon-movie.svg" alt="Movie">
-                </div> <!-- cd-timeline__img -->
-
-                <div class="cd-timeline__content text-component">
-                    <h2>Final Section</h2>
-                    <p class="color-contrast-medium">This is the content of the last section</p>
-
-                    <div class="flex justify-between items-center">
-                        <span class="cd-timeline__date">Feb 26</span>
-                    </div>
-                </div> <!-- cd-timeline__content -->
-            </div> <!-- cd-timeline__block -->
+                </div>
+	        <?php endwhile; endif; ?>
         </div>
-    </section> <!-- cd-timeline -->
+    </section>
     <!-- <script src="--><?php //echo get_template_directory_uri() ?><!--/assets/js/main.js"></script> -->
 </body>
 </html>
