@@ -55,7 +55,7 @@
 
                         <div class="flex justify-between items-center">
                             <span class="cd-timeline__date"><?php the_date(); ?></span>
-                            <a href="<?php the_permalink(); ?>" class="btn btn--subtle">Read more</a>
+                            <a target="_parent" href="<?php the_permalink(); ?>" class="btn btn--subtle">Read more</a>
                         </div>
                     </div>
                 </div>
